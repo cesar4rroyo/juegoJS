@@ -1,26 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+        <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
+        <title>Simon Game</title>
+        <link rel="shortcut icon" href="iconSimon.png" type="image/x-icon" />
+        <link rel="stylesheet" href="estilos.css" />
 
-<head>
-    <meta charset="UTF-8">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-    <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
-    <title>Prueba Juego JS</title>
-    <link rel="stylesheet" href="estilos.css">
+        <!-- Font Awesome -->
+        <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        />
+        <!-- Google Fonts -->
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+        />
+        <!-- Bootstrap core CSS -->
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
+        <!-- Material Design Bootstrap -->
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.1/css/mdb.min.css"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css?family=Crete+Round|Fredoka+One|Pacifico&display=swap"
+            rel="stylesheet"
+        />
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    </head>
 
-</head>
+    <body>
+        <head>
+            <nav
+                class="navbar navbar-expand-lg navbar-dark colorNavbar"
+                style="justify-content: center;"
+            >
+                <h1 id="title" style="color: antiquewhite;">Simon Game</h1>
+            </nav>
+        </head>
 
-
-<body>
-    <div class="gameboard">
-        <div id="celeste" class="color celeste left" data-color="celeste"></div>
-        <div id="violeta" class="color violeta right" data-color="violeta"></div>
-        <div id="naranja" class="color naranja left" data-color="naranja"></div>
-        <div id="verde" class="color verde right" data-color="verde"></div>
-        <button id="btnEmpezar" class="btn-start" onclick="empezarJuego()">Empezar a jugar!</button>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-    <script src="code.js"></script>
-</body>
-
+        <div class="contenedor_game">
+            <button
+                id="btn_instructions"
+                type="button"
+                class="btn btn-warning btn-rounded"
+                data-toggle="modal"
+                data-target="#basicExampleModal"
+                style="font-family: 'Fredoka One', cursive;"
+            >
+                Game instructions
+            </button>
+            <div
+                class="modal fade"
+                id="basicExampleModal"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+            >
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5
+                                class="modal-title"
+                                id="exampleModalLabel"
+                                style="font-family: 'Fredoka One', cursive;"
+                            >
+                                Instructions
+                            </h5>
+                            <button
+                                type="button"
+                                class="close"
+                                data-dismiss="modal"
+                                aria-label="Close"
+                            >
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <h4 style="text-align: center;">
+                                How are we from memory? Can you remember the
+                                color sequence? Dare yourself!
+                            </h4>
+                            <p
+                                style="text-align: justify; font-family: 'Crete Round', serif; "
+                            >
+                                Simon is an educational game to test wit,
+                                reflexes and memory. A permanent random
+                                challenge, skill and observation. <br />
+                                Each move will show a new color that you will
+                                always have to repeat from the beginning in the
+                                same order, forming a color chain. <br />
+                                To do this you will click with the mouse on the
+                                appropriate color.
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button
+                                style="font-family: 'Fredoka One', cursive;"
+                                type="button"
+                                class="btn btn-secondary"
+                                data-dismiss="modal"
+                            >
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <label
+                id="btn_level"
+                class="hide"
+                style="font-family: 'Fredoka One', cursive;"
+            >
+                Nivel: 1
+            </label>
+            <div class="gameboard">
+                <div
+                    id="celeste"
+                    class="color celeste left"
+                    data-color="celeste"
+                ></div>
+                <div
+                    id="violeta"
+                    class="color violeta right"
+                    data-color="violeta"
+                ></div>
+                <div
+                    id="naranja"
+                    class="color naranja left"
+                    data-color="naranja"
+                ></div>
+                <div
+                    id="verde"
+                    class="color verde right"
+                    data-color="verde"
+                ></div>
+                <button
+                    id="btnEmpezar"
+                    class="btn-start"
+                    onclick="empezarJuego()"
+                >
+                    Start Game!
+                </button>
+            </div>
+        </div>
+        <footer class="page-footer font-small colorNavbar">
+            <!-- Copyright -->
+            <div class="footer-copyright text-center py-3">
+                © 2020 Copyright:
+                <a href="https://cesar4rroyo.com/"> cesar4rroyo</a>
+            </div>
+            <!-- Copyright -->
+        </footer>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+        <script src="code.js"></script>
+        <!-- JQuery -->
+        <script
+            type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+        ></script>
+        <!-- Bootstrap tooltips -->
+        <script
+            type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"
+        ></script>
+        <!-- Bootstrap core JavaScript -->
+        <script
+            type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"
+        ></script>
+        <!-- MDB core JavaScript -->
+        <script
+            type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.1/js/mdb.min.js"
+        ></script>
+    </body>
 </html>

@@ -1,9 +1,16 @@
-body {
+.contenedor_game {
     margin: 0;
-    background: #dedede;
+    /* background: #dedede;
+     */
+    background: #136a8a;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient( to right, #267871, #136a8a);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient( to right, #267871, #136a8a);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     display: flex;
     align-items: center;
-    height: 100vh;
+    height: 80vh;
 }
 
 .gameboard {
@@ -38,6 +45,15 @@ body {
     background: #7ed6df;
 }
 
+.colorNavbar {
+    background: #485563;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient( to right, #29323c, #485563);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient( to right, #29323c, #485563);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
 .violeta {
     background: #be2edd;
 }
@@ -69,7 +85,7 @@ body {
     color: #2c3e50;
     font-size: 2.5rem;
     position: absolute;
-    top: calc(50% - 50px);
+    top: calc(43%);
     left: calc(50% - 200px);
 }
 
@@ -79,4 +95,30 @@ body {
 
 * {
     font-family: Arial, Helvetica, sans-serif;
+}
+
+#title {
+    font-family: "Pacifico", cursive;
+}
+
+#btnEmpezar {
+    font-family: "Fredoka One", cursive;
+    border-radius: 30px;
+}
+
+#btn_instructions {
+    right: 1rem;
+    position: absolute;
+    top: 5rem;
+    border-radius: 20px;
+}
+
+#btn_level {
+    position: absolute;
+    bottom: 3.5rem;
+    left: 39rem;
+}
+
+.esconder {
+    display: none;
 }
