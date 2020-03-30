@@ -3,14 +3,16 @@ const violeta = document.getElementById("violeta");
 const naranja = document.getElementById("naranja");
 const verde = document.getElementById("verde");
 const btnEmpezar = document.getElementById("btnEmpezar");
-const ULTIMO_NIVEL = 10;
+const ULTIMO_NIVEL = 9;
 const labelNivel = document.getElementById("btn_level");
-
-// swal('hola!')
+const labelTiempo = document.getElementById("lbl_tiempo");
+let timer;
+let counter = 15;
 
 class Juego {
     constructor() {
         this.inicializar = this.inicializar.bind(this);
+        this.siguienteNivel = this.siguienteNivel.bind(this);
         name = "";
         swal({
             title: "Welcome to the game",
@@ -29,11 +31,28 @@ class Juego {
                 this.generarSecuencia();
                 labelNivel.classList.remove("hide");
                 labelNivel.classList.add("btn", "btn-warning");
-                setTimeout(this.siguienteNivel(), 500);
+                setTimeout(this.siguienteNivel, 500);
+                labelTiempo.classList.remove("hide");
+                labelTiempo.classList.add("btn", "btn-success");
+                labelTiempo.innerHTML = counter;
+                this.temporizador();
             } else {
                 this.empezarJuego();
             }
         });
+    }
+
+    temporizador() {
+        timer = setInterval(() => {
+            counter--;
+            if (counter < 0) {
+                clearInterval(timer);
+                counter = 15;
+                this.perdioElJuego();
+            } else {
+                labelTiempo.innerText = counter;
+            }
+        }, 1000);
     }
 
     inicializar() {
@@ -129,11 +148,13 @@ class Juego {
                 this.nivel++;
                 this.cambiarNivel(this.nivel);
                 this.eliminarEventosClick();
-
                 if (this.nivel === ULTIMO_NIVEL + 1) {
                     this.ganoElJuego();
                 } else {
                     setTimeout(this.siguienteNivel, 1500);
+                    clearInterval(timer);
+                    counter = 15;
+                    this.temporizador();
                 }
             }
         } else {
@@ -150,6 +171,10 @@ class Juego {
     perdioElJuego() {
         labelNivel.classList.remove("btn", "btn-warning");
         labelNivel.classList.add("hide");
+        clearInterval(timer);
+        counter = 15;
+        labelTiempo.classList.remove("btn", "btn-success");
+        labelTiempo.classList.add("hide");
         this.cambiarNivel("1");
         swal(name, "Sorry, you lose :(", "error").then(() => {
             this.eliminarEventosClick();
